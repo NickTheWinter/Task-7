@@ -1,0 +1,16 @@
+C:\Users\Nikolai\source\repos\Task7\Task7\bin\Debug\Task7.exe.config
+C:\Users\Nikolai\source\repos\Task7\Task7\bin\Debug\Task7.exe
+C:\Users\Nikolai\source\repos\Task7\Task7\bin\Debug\Task7.pdb
+C:\Users\Nikolai\source\repos\Task7\Task7\obj\Debug\Task7.csproj.AssemblyReference.cache
+C:\Users\Nikolai\source\repos\Task7\Task7\obj\Debug\Task7.csproj.SuggestedBindingRedirects.cache
+C:\Users\Nikolai\source\repos\Task7\Task7\obj\Debug\MainWindow.g.cs
+C:\Users\Nikolai\source\repos\Task7\Task7\obj\Debug\App.g.cs
+C:\Users\Nikolai\source\repos\Task7\Task7\obj\Debug\Task7_MarkupCompile.cache
+C:\Users\Nikolai\source\repos\Task7\Task7\obj\Debug\Task7_MarkupCompile.lref
+C:\Users\Nikolai\source\repos\Task7\Task7\obj\Debug\MainWindow.baml
+C:\Users\Nikolai\source\repos\Task7\Task7\obj\Debug\Task7.g.resources
+C:\Users\Nikolai\source\repos\Task7\Task7\obj\Debug\Task7.Properties.Resources.resources
+C:\Users\Nikolai\source\repos\Task7\Task7\obj\Debug\Task7.csproj.GenerateResource.cache
+C:\Users\Nikolai\source\repos\Task7\Task7\obj\Debug\Task7.csproj.CoreCompileInputs.cache
+C:\Users\Nikolai\source\repos\Task7\Task7\obj\Debug\Task7.exe
+C:\Users\Nikolai\source\repos\Task7\Task7\obj\Debug\Task7.pdb

@@ -1,0 +1,104 @@
+﻿<Window x:Class="Task7.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Task7"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid x:Name="grid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            
+        </Grid.RowDefinitions>
+        <Grid x:Name="Info" Grid.Row="2" Grid.Column="5" Grid.RowSpan="3" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.ColumnSpan="2" Content="Разреш. столбец =" VerticalContentAlignment="Center"/>
+            <Label Grid.Row="1" Grid.ColumnSpan="2" Content="Разреш. строка =" VerticalContentAlignment="Center"/>
+            <Label Grid.Row="2" Grid.ColumnSpan="2" Content="Разреш. эл. = " VerticalContentAlignment="Center"/>
+            <Label Grid.Row="3" Grid.ColumnSpan="2" Content="Свобод. перем. =" VerticalContentAlignment="Center"/>
+            <Label Grid.Row="4" Grid.ColumnSpan="2" Content="Базис. перем. = " VerticalContentAlignment="Center"/>
+            <Label Grid.Row="5" Content="X1 = "/>
+            <Label Grid.Row="6" Content="X3 = "/>
+            <Label Grid.Row="5" Grid.Column="2" Content="X2 = "/>
+            <Label Grid.Row="6" Grid.Column="2" Content="X4 = "/>
+            <TextBox x:Name="ResolveColumn" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" FontSize="30" IsReadOnly="True" HorizontalContentAlignment="Center"/>
+            <TextBox x:Name="ResolveRow" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" FontSize="30" IsReadOnly="True" HorizontalContentAlignment="Center"/>
+            <TextBox x:Name="ResolveEl" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" FontSize="30" IsReadOnly="True" HorizontalContentAlignment="Center"/>
+            <TextBox x:Name="FreePerem" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" FontSize="30" IsReadOnly="True" HorizontalContentAlignment="Center"/>
+            <TextBox x:Name="BasisPerem" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" FontSize="30" IsReadOnly="True" HorizontalContentAlignment="Center"/>
+            <Grid x:Name="Roots" Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBox Grid.Row="0" Grid.Column="1" FontSize="24" IsReadOnly="True" HorizontalContentAlignment="Center"/>
+                <TextBox Grid.Row="0" Grid.Column="3" FontSize="24" IsReadOnly="True" HorizontalContentAlignment="Center"/>
+                <TextBox Grid.Row="1" Grid.Column="1" FontSize="24" IsReadOnly="True" HorizontalContentAlignment="Center"/>
+                <TextBox Grid.Row="1" Grid.Column="3" FontSize="24" IsReadOnly="True" HorizontalContentAlignment="Center"/>
+            </Grid>
+        </Grid>
+        
+        <Label x:Name="X1" Content="X1" Grid.Row="0" Grid.Column="0" FontSize="36" HorizontalContentAlignment="Center" BorderThickness="2,2,2,2" BorderBrush="#FF121212" />
+        <Label x:Name="X2" Content="X2" Grid.Row="0" Grid.Column="1" FontSize="36" HorizontalContentAlignment="Center" BorderThickness="2,2,2,2" BorderBrush="#FF121212" />
+        <Label x:Name="X3" Content="X3" Grid.Row="0" Grid.Column="2" FontSize="36" HorizontalContentAlignment="Center" BorderThickness="2,2,2,2" BorderBrush="#FF121212" />
+        <Label x:Name="X4" Content="X4" Grid.Row="0" Grid.Column="3" FontSize="36" HorizontalContentAlignment="Center" BorderThickness="2,2,2,2" BorderBrush="#FF121212" />
+        <Label x:Name="b" Content="b" Grid.Row="0" Grid.Column="4" FontSize="36" HorizontalContentAlignment="Center" BorderThickness="2,2,2,2" BorderBrush="#FF121212" />
+        
+        <TextBox x:Name="OneOne" Text="2" Grid.Row="1" Grid.Column="0" FontSize="36" HorizontalContentAlignment="Center" BorderThickness="2,2,2,2" BorderBrush="#FF121212" TextChanged="OneOne_TextChanged" />
+        <TextBox x:Name="OneTwo" Text="3" Grid.Row="1" Grid.Column="1" FontSize="36" HorizontalContentAlignment="Center" BorderThickness="2,2,2,2" BorderBrush="#FF121212" TextChanged="OneTwo_TextChanged" />
+        <TextBox x:Name="OneThree" Text="1" Grid.Row="1" Grid.Column="2" FontSize="36" HorizontalContentAlignment="Center" BorderThickness="2,2,2,2" BorderBrush="#FF121212" TextChanged="OneThree_TextChanged" />
+        <TextBox x:Name="OneFour" Text="0" Grid.Row="1" Grid.Column="3" FontSize="36" HorizontalContentAlignment="Center" BorderThickness="2,2,2,2" BorderBrush="#FF121212" TextChanged="OneFour_TextChanged" />
+        <TextBox x:Name="OneFive" Text="4" Grid.Row="1" Grid.Column="4" FontSize="36" HorizontalContentAlignment="Center" BorderThickness="2,2,2,2" BorderBrush="#FF121212" TextChanged="OneFive_TextChanged" />
+              
+        <TextBox x:Name="TwoOne" Text="1" Grid.Row="2" Grid.Column="0" FontSize="36" HorizontalContentAlignment="Center" BorderThickness="2,2,2,2" BorderBrush="#FF121212" TextChanged="TwoOne_TextChanged" />
+        <TextBox x:Name="TwoTwo" Text="0" Grid.Row="2" Grid.Column="1" FontSize="36" HorizontalContentAlignment="Center" BorderThickness="2,2,2,2" BorderBrush="#FF121212" TextChanged="TwoTwo_TextChanged" />
+        <TextBox x:Name="TwoThree" Text="0" Grid.Row="2" Grid.Column="2" FontSize="36" HorizontalContentAlignment="Center" BorderThickness="2,2,2,2" BorderBrush="#FF121212" TextChanged="TwoThree_TextChanged" />
+        <TextBox x:Name="TwoFour" Text="1" Grid.Row="2" Grid.Column="3" FontSize="36" HorizontalContentAlignment="Center" BorderThickness="2,2,2,2" BorderBrush="#FF121212" TextChanged="TwoFour_TextChanged" />
+        <TextBox x:Name="TwoFive" Text="3" Grid.Row="2" Grid.Column="4" FontSize="36" HorizontalContentAlignment="Center" BorderThickness="2,2,2,2" BorderBrush="#FF121212" TextChanged="TwoFive_TextChanged" />
+              
+        <TextBox x:Name="ThreeOne" Text="2" Grid.Row="3" Grid.Column="0" FontSize="36" HorizontalContentAlignment="Center" BorderThickness="2,2,2,2" BorderBrush="#FF121212" TextChanged="ThreeOne_TextChanged" />
+        <TextBox x:Name="ThreeTwo" Text="1" Grid.Row="3" Grid.Column="1" FontSize="36" HorizontalContentAlignment="Center" BorderThickness="2,2,2,2" BorderBrush="#FF121212" TextChanged="ThreeTwo_TextChanged" />
+        <TextBox x:Name="ThreeThree" Text="0" Grid.Row="3" Grid.Column="2" FontSize="36" HorizontalContentAlignment="Center" BorderThickness="2,2,2,2" BorderBrush="#FF121212" TextChanged="ThreeThree_TextChanged" />
+        <TextBox x:Name="ThreeFour" Text="0" Grid.Row="3" Grid.Column="3" FontSize="36" HorizontalContentAlignment="Center" BorderThickness="2,2,2,2" BorderBrush="#FF121212" TextChanged="ThreeFour_TextChanged" />
+        <TextBox x:Name="ThreeFive" Text="0" Grid.Row="3" Grid.Column="4" FontSize="36" HorizontalContentAlignment="Center" BorderThickness="2,2,2,2" BorderBrush="#FF121212" TextChanged="ThreeFive_TextChanged" />
+
+        <Button x:Name="Calculate" Content="Произвести расчет" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5" FontSize="36" Click="Calculate_Click"/>
+        <Button x:Name="FillWithRand" Content="Заполнить случайно" Grid.Row="0" Grid.Column="5" FontSize="22" Grid.ColumnSpan="2" Click="FillWithRand_Click"/>
+        <Button x:Name="Clear" Content="Очистить поля" Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="2" FontSize="22" Click="Clear_Click"/>
+    </Grid>
+</Window>
