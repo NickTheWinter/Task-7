@@ -1,17 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Task7
 {
@@ -64,7 +55,7 @@ namespace Task7
                                 MessageBox.Show("Введенны некорректные значения");
                                 goto end;
                             }
-                            
+
                         }
 
                         else
@@ -72,7 +63,7 @@ namespace Task7
 
                     }
                 }
-                
+
             mark:
                 Console.WriteLine();
 
@@ -147,7 +138,7 @@ namespace Task7
 
                 }
 
-                
+
                 int freeperem = 0;
                 IEnumerable<TextBox> rots = Roots.Children.OfType<TextBox>();
                 for (int i = 0; i < matrix.GetLength(0); i++)
@@ -166,7 +157,7 @@ namespace Task7
                 //Вывод количества свободных и базисных переменных
                 FreePerem.Text = freeperem.ToString();
                 BasisPerem.Text = (matrix.GetLength(1) - freeperem - 1).ToString();
-            
+
             }
             else
                 MessageBox.Show("Значение целевой функции не равно 0");
