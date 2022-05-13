@@ -24,7 +24,8 @@ namespace Task7
         {
             InitializeComponent();
         }
-        public static string letters = "qwertyuiop[]asdgfhjlk;'xzcvbnm,/`|\\_\"=+~./<>(){}:?йцукенгшщзхъфывапролджэячсмитьбюё";
+        public static string letters = "qwertyuiop[]asdgfhjlk;'xzcvbnm/`|\\_\"=+~./<>(){}:?йцукенгшщзхъфывапролджэячсмитьбюё";
+        //Метод проверки вводимых значение в Textbox
         public static string CorrectInput(string text)
         {
             foreach (char item in letters.ToCharArray())
@@ -37,6 +38,7 @@ namespace Task7
         }
         private void Calculate_Click(object sender, RoutedEventArgs e)
         {
+            //Объявление матрицы
             double?[,] matrix = new double?[3, 5];
             foreach (TextBox textBox in grid.Children.OfType<TextBox>())
             {
@@ -51,8 +53,18 @@ namespace Task7
                     {
                         if (matrix[i, j] == null)
                         {
-                            matrix[i, j] = Convert.ToDouble(textBox.Text);
-                            goto mark;
+                            //Запись значений Textbox'ов в матрицу
+                            try
+                            {
+                                matrix[i, j] = Convert.ToDouble(textBox.Text);
+                                goto mark;
+                            }
+                            catch (Exception)
+                            {
+                                MessageBox.Show("Введенны некорректные значения");
+                                goto end;
+                            }
+                            
                         }
 
                         else
@@ -65,6 +77,7 @@ namespace Task7
                 Console.WriteLine();
 
             }
+            //Проверка на значение целевой функции
             if (matrix[2, 4] == 0)
             {
                 double[] marks = new double[4];
@@ -80,11 +93,13 @@ namespace Task7
                     {
                         if (i == 2 && j < 4)
                         {
+                            //Определение строки оценков
                             marks[counter1] = (double)matrix[i, j];
                             counter1++;
                         }
                         if ((i == 0 && j == 4) || (i == 1 && j == 4))
                         {
+                            //Определение столбца свободных элементов
                             freeEl[counter2] = (double)matrix[i, j];
                             counter2++;
                         }
@@ -92,6 +107,7 @@ namespace Task7
 
                 for (int i = 0; i < marks.Length; i++)
                 {
+                    //Определение разрешающего столбца
                     if (marks[i] > maxMark)
                     {
                         maxMark = marks[i];
@@ -106,6 +122,7 @@ namespace Task7
                         {
                             if (matrix[i, j] == 0 || matrix[i, 4] < 0)
                                 continue;
+                            //Определение разрещающей строки
                             else if (matrix[i, 4] >= 0 && matrix[i, j] > 0)
                             {
                                 minRatio = ((double)((double)matrix[i, 4] / matrix[i, j] < minRatio ? matrix[i, 4] / matrix[i, j] : minRatio));
@@ -114,7 +131,7 @@ namespace Task7
 
                         }
                     }
-
+                //Находим разрешающий элемент и выводим значения переменных в TextBox
                 if (resolveColumn > 0 && resolveRow > 0)
                 {
                     double resolveEl = (double)matrix[resolveRow - 1, resolveColumn - 1];
@@ -130,21 +147,23 @@ namespace Task7
 
                 }
 
-
+                
                 int freeperem = 0;
                 IEnumerable<TextBox> rots = Roots.Children.OfType<TextBox>();
                 for (int i = 0; i < matrix.GetLength(0); i++)
                     for (int j = 0; j < matrix.GetLength(1); j++)
                         if (IsSingleColumn(matrix, i, j))
                         {
+                            //Определение количества свободжных переменных
                             freeperem++;
                             TextBox root = rots.ToArray()[j];
+                            //Вывод корней в TextBox
                             root.Text = matrix[freeperem - 1, 4].ToString();
                         }
                 foreach (var item in Roots.Children.OfType<TextBox>())
                     if (item.Text == "")
                         item.Text = "Нет";
-
+                //Вывод количества свободных и базисных переменных
                 FreePerem.Text = freeperem.ToString();
                 BasisPerem.Text = (matrix.GetLength(1) - freeperem - 1).ToString();
             
@@ -154,7 +173,7 @@ namespace Task7
             end:
             Console.WriteLine();
         }
-
+        //Метод определяющий является ли столбец единичным
         public bool IsSingleColumn(double?[,] matrix, int i, int j)
         {
             try
@@ -167,7 +186,7 @@ namespace Task7
             catch (IndexOutOfRangeException) { }
             return false;
         }
-
+        //Очищение значений всех TextBox'ов
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
             foreach (TextBox textBox in grid.Children.OfType<TextBox>())
@@ -177,7 +196,7 @@ namespace Task7
             foreach (TextBox textBox in Roots.Children.OfType<TextBox>())
                 textBox.Clear();
         }
-
+        //Заполнение TextBox'ов рандомными значениями
         private void FillWithRand_Click(object sender, RoutedEventArgs e)
         {
             Random rand = new Random();
@@ -191,7 +210,7 @@ namespace Task7
                 textBox.Clear();
         }
 
-
+        //Проверка вводимых значений TextBox'ов
         private void OneOne_TextChanged(object sender, TextChangedEventArgs e)
         {
             OneOne.Text = CorrectInput(OneOne.Text);
@@ -266,7 +285,10 @@ namespace Task7
         {
             ThreeFive.Text = CorrectInput(ThreeFive.Text);
         }
-
-
+        //Вывод постановки задачи
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Постановка задачи: Нахождение разрешающего элемента в симплекс-таблице, определение количества свободных и базисных переменных, а также значения всех переменных X1=? Х2=? Х3=? Х4=?");
+        }
     }
 }
