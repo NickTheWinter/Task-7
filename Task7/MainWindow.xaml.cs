@@ -150,7 +150,7 @@ namespace Task7
             
             }
             else
-                MessageBox.Show("Невозможно произвести вычисление");
+                MessageBox.Show("Значение целевой функции не равно 0");
             end:
             Console.WriteLine();
         }
