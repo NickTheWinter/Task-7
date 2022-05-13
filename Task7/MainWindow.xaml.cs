@@ -65,87 +65,93 @@ namespace Task7
                 Console.WriteLine();
 
             }
-            double[] marks = new double[4];
-            double[] freeEl = new double[2];
-            int counter1 = 0;
-            int counter2 = 0;
-            double maxMark = -9999;
-            int resolveColumn = 0;
-            int resolveRow = 0;
-            double minRatio = 9999;
-            for (int i = 0; i < matrix.GetLength(0); i++)
-                for (int j = 0; j < matrix.GetLength(1); j++)
-                {
-                    if (i == 2 && j < 4)
-                    {
-                        marks[counter1] = (double)matrix[i, j];
-                        counter1++;
-                    }
-                    if ((i == 0 && j == 4) || (i == 1 && j == 4))
-                    {
-                        freeEl[counter2] = (double)matrix[i, j];
-                        counter2++;
-                    }
-                }
-
-            for (int i = 0; i < marks.Length; i++)
+            if (matrix[2, 4] == 0)
             {
-                if (marks[i] > maxMark)
-                {
-                    maxMark = marks[i];
-                    resolveColumn = i + 1;
-                }
-            }
-
-            for (int i = 0; i < matrix.GetLength(0); i++)
-                for (int j = 0; j < matrix.GetLength(1); j++)
-                {
-                    if (j == resolveColumn - 1 && i != 2)
+                double[] marks = new double[4];
+                double[] freeEl = new double[2];
+                int counter1 = 0;
+                int counter2 = 0;
+                double maxMark = -9999;
+                int resolveColumn = 0;
+                int resolveRow = 0;
+                double minRatio = 9999;
+                for (int i = 0; i < matrix.GetLength(0); i++)
+                    for (int j = 0; j < matrix.GetLength(1); j++)
                     {
-                        if (matrix[i, j] == 0 || matrix[i, 4] < 0)
-                            continue;
-                        else if (matrix[i, 4] >= 0 && matrix[i, j] > 0)
+                        if (i == 2 && j < 4)
                         {
-                            minRatio = ((double)((double)matrix[i, 4] / matrix[i, j] < minRatio ? matrix[i, 4] / matrix[i, j] : minRatio));
-                            resolveRow = i + 1;
+                            marks[counter1] = (double)matrix[i, j];
+                            counter1++;
                         }
+                        if ((i == 0 && j == 4) || (i == 1 && j == 4))
+                        {
+                            freeEl[counter2] = (double)matrix[i, j];
+                            counter2++;
+                        }
+                    }
 
+                for (int i = 0; i < marks.Length; i++)
+                {
+                    if (marks[i] > maxMark)
+                    {
+                        maxMark = marks[i];
+                        resolveColumn = i + 1;
                     }
                 }
 
-            if (resolveColumn > 0 && resolveRow > 0)
-            {
-                double resolveEl = (double)matrix[resolveRow - 1, resolveColumn - 1];
-                ResolveColumn.Text = resolveColumn.ToString();
-                ResolveEl.Text = resolveEl.ToString();
-                ResolveRow.Text = resolveRow.ToString();
+                for (int i = 0; i < matrix.GetLength(0); i++)
+                    for (int j = 0; j < matrix.GetLength(1); j++)
+                    {
+                        if (j == resolveColumn - 1 && i != 2)
+                        {
+                            if (matrix[i, j] == 0 || matrix[i, 4] < 0)
+                                continue;
+                            else if (matrix[i, 4] >= 0 && matrix[i, j] > 0)
+                            {
+                                minRatio = ((double)((double)matrix[i, 4] / matrix[i, j] < minRatio ? matrix[i, 4] / matrix[i, j] : minRatio));
+                                resolveRow = i + 1;
+                            }
+
+                        }
+                    }
+
+                if (resolveColumn > 0 && resolveRow > 0)
+                {
+                    double resolveEl = (double)matrix[resolveRow - 1, resolveColumn - 1];
+                    ResolveColumn.Text = resolveColumn.ToString();
+                    ResolveEl.Text = resolveEl.ToString();
+                    ResolveRow.Text = resolveRow.ToString();
+                }
+                else
+                {
+                    ResolveColumn.Text = "нет";
+                    ResolveEl.Text = "нет";
+                    ResolveRow.Text = "нет";
+
+                }
+
+
+                int freeperem = 0;
+                IEnumerable<TextBox> rots = Roots.Children.OfType<TextBox>();
+                for (int i = 0; i < matrix.GetLength(0); i++)
+                    for (int j = 0; j < matrix.GetLength(1); j++)
+                        if (IsSingleColumn(matrix, i, j))
+                        {
+                            freeperem++;
+                            TextBox root = rots.ToArray()[j];
+                            root.Text = matrix[freeperem - 1, 4].ToString();
+                        }
+                foreach (var item in Roots.Children.OfType<TextBox>())
+                    if (item.Text == "")
+                        item.Text = "Нет";
+
+                FreePerem.Text = freeperem.ToString();
+                BasisPerem.Text = (matrix.GetLength(1) - freeperem - 1).ToString();
+            
             }
             else
-            {
-                ResolveColumn.Text = "нет";
-                ResolveEl.Text = "нет";
-                ResolveRow.Text = "нет";
-
-            }
-
-
-            int freeperem = 0;
-            IEnumerable<TextBox> rots = Roots.Children.OfType<TextBox>();
-            for (int i = 0; i < matrix.GetLength(0); i++)
-                for (int j = 0; j < matrix.GetLength(1); j++)
-                    if (IsSingleColumn(matrix, i, j))
-                    {
-                        freeperem++;
-                        TextBox root = rots.ToArray()[j];
-                        root.Text = matrix[freeperem - 1, 4].ToString();
-                    }
-            foreach (var item in Roots.Children.OfType<TextBox>())
-                if (item.Text == "")
-                    item.Text = "Нет";
-            
-            FreePerem.Text = freeperem.ToString();
-            BasisPerem.Text = (matrix.GetLength(1) - freeperem - 1).ToString();
-        end:
+                MessageBox.Show("Невозможно произвести вычисление");
+            end:
             Console.WriteLine();
         }
 
